@@ -1,0 +1,11 @@
+node_modules
+*.log
+.DS_Store
+bundle.js
+test
+test.js
+demo
+demo.*
+index.html
+example
+.npmignore

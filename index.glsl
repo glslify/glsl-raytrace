@@ -1,0 +1,31 @@
+// Originally sourced from https://www.shadertoy.com/view/ldfSWs
+// Thank you Iñigo :)
+
+vec2 calcRayIntersection(vec3 rayOrigin, vec3 rayDir, float maxd, float precis) {
+  float latest = precis * 2.0;
+  float dist   = +0.0;
+  float type   = -1.0;
+  vec2  res    = vec2(-1.0, -1.0);
+
+  for (int i = 0; i < steps; i++) {
+    if (latest < precis || dist > maxd) break;
+
+    vec2 result = map(rayOrigin + rayDir * dist);
+
+    latest = result.x;
+    type   = result.y;
+    dist  += latest;
+  }
+
+  if (dist < maxd) {
+    res = vec2(dist, type);
+  }
+
+  return res;
+}
+
+vec2 calcRayIntersection(vec3 rayOrigin, vec3 rayDir) {
+  return calcRayIntersection(rayOrigin, rayDir, 20.0, 0.001);
+}
+
+#pragma glslify: export(calcRayIntersection)
