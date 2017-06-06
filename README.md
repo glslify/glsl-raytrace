@@ -92,7 +92,7 @@ void main() {
 }
 ```
 
-### `raytrace(vec3 ro, vec3 rd, float maxd, float precis)`
+### `raytrace(vec3 ro, vec3 rd, float maxd, float precis, float reduction)`
 
 For more control, you may optionally include:
 
@@ -100,6 +100,8 @@ For more control, you may optionally include:
 * `float precis`: the minimum closeness to the surface before
   considering the trace to be a collision. Defaults to 0.001.
   Increasing this number will improve performance.
+* `float reduction`: the ratio to reduce the growth of the ray. Defaults to 1.0.
+  Decreasing this number may fix glitches caused by rays passing through objects.
 
 ## Contributing
 
